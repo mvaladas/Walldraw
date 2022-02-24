@@ -47,4 +47,12 @@ extern float destination[XYZ];
 extern float current_position[XYZ];
 extern long current_steps_M1, current_steps_M2; //当前步进电机相对于0点位置总步数
 
+#define PEN_UP_ANGLE    95  //抬笔
+#define PEN_DOWN_ANGLE  60  //落笔
+//上面是需要调节的参数 =============================================
+
+
+#define PEN_DOWN 1  //笔状态  下笔
+#define PEN_UP 0    //笔状态  抬笔
+
 #endif

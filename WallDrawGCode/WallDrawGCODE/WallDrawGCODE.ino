@@ -2,7 +2,7 @@
 #include "gcode_parser.h"
 #include "QHStepper.h"
 
-#include <Servo.h>
+
 
 String gcode_command="";
 float destination[XYZ] = {0,0,0};
@@ -10,7 +10,7 @@ float current_position[XYZ] = {0,0,0};
 long current_steps_M1 = 0, current_steps_M2 = 0;
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(19200);
   stepper_init();
   delay(1200);
   Serial.println("Grbl 1.1h ['$' for help]");
@@ -23,6 +23,7 @@ void loop() {
     process_parsed_command();
     gcode_command = "";
     Serial.println("ok");
+    delay(10);
   } 
 }
 
