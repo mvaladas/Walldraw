@@ -18,6 +18,10 @@ This is designed to work on a Raspberry Pi Pico programmed via Arduino. It might
 * Might be possible to use microswitches and bobbles on the string to 'home' it.
 * or at least add a 'jog' ability with buttons to let you home it manually.
 
+## Issues
+* You need the extra RP2040 Arduino thing installed -- not just the official Arduino one, but the other one as well because the official Arduino one doens't include Servo support. -- update this when I remember the details
+
+
 
 
 
