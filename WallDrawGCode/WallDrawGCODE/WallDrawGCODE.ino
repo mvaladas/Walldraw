@@ -10,7 +10,7 @@ float current_position[XYZ] = {0,0,0};
 long current_steps_M1 = 0, current_steps_M2 = 0;
 
 void setup() {
-  Serial.begin(19200);
+  Serial.begin(9600);
   stepper_init();
   delay(1200);
   Serial.println("Grbl 1.1h ['$' for help]");
