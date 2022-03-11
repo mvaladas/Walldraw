@@ -1,6 +1,6 @@
 # Walldraw 
 
-A fork of shihaipeng03/Walldraw indended to fix GCode, and also include hardware.
+A fork of shihaipeng03/Walldraw indended to fix GCode, and also include hardware. This has 3D printable motor mounts and pulleys. I'm testing out gondala designs at the moment
 
 This is designed to work on a Raspberry Pi Pico programmed via Arduino. It might work on other boards. I've tested it on a couple of Unos (one was a clone, the other I'm sure) and it didn't run. Not sure of the problem.
 

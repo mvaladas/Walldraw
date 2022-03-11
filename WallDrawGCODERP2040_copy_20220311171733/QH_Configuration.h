@@ -1,6 +1,24 @@
 #ifndef QH_CONFIGURATION_H
 #define QH_CONFIGURATION_H
 
+/**
+What config options should I bring to the front?
+start X and Y?
+*/
+#define START_X 0
+#define START_Y 0
+
+#define X_SEPARATION  430
+#define X_MAX_POS       ( X_SEPARATION*0.5)   //x轴最大值  0位在画板中心
+#define X_MIN_POS       (-X_SEPARATION*0.5)   //x轴最小值
+#define PEN_UP_ANGLE    110  //抬笔
+#define PEN_DOWN_ANGLE  50  //落笔
+#define INVERT_M1_DIR     -1        
+#define INVERT_M2_DIR     -1
+
+#define Y_MAX_POS         (-200)   //y轴最大值 画板最下方
+#define Y_MIN_POS         (200)
+
 #include <Arduino.h>
 
 #define XY 2
@@ -20,20 +38,17 @@
 #define N_ARC_CORRECTION   25  //修正之间的极化段数
 
 
-#define X_SEPARATION  505           //两绳上方的水平距离mm 
-#define X_MAX_POS       ( X_SEPARATION*0.5)   //x轴最大值  0位在画板中心
-#define X_MIN_POS       (-X_SEPARATION*0.5)   //x轴最小值
+          //两绳上方的水平距离mm 
+
 
 /* 垂直距离的参数： 正值在画板下放，理论上只要画板够大可以无限大，负值区域在笔（开机前）的上方*/
-#define Y_MAX_POS         (-300)   //y轴最大值 画板最下方
-#define Y_MIN_POS         (300)    //y轴最小值 画板最上方  左右两线的固定点到笔的垂直距离，尽量测量摆放准确，误差过大会有畸变
+    //y轴最小值 画板最上方  左右两线的固定点到笔的垂直距离，尽量测量摆放准确，误差过大会有畸变
 
 #define LINE_DELAY      1   //步进电机每步的等候时间 （微妙）
 
 //两个电机的旋转方向  1正转  -1反转  
 //调节进出方向可垂直反转图像
-#define INVERT_M1_DIR     1        
-#define INVERT_M2_DIR     -1 
+
 
 #define M_PI 3.14159265358979323846
 #define RADIANS(d) ((d)*M_PI/180.0)
@@ -47,8 +62,7 @@ extern float destination[XYZ];
 extern float current_position[XYZ];
 extern long current_steps_M1, current_steps_M2; //当前步进电机相对于0点位置总步数
 
-#define PEN_UP_ANGLE    95  //抬笔
-#define PEN_DOWN_ANGLE  60  //落笔
+
 //上面是需要调节的参数 =============================================
 
 
