@@ -4,7 +4,7 @@ void process_parsed_command() {
    gcode_command.toUpperCase();
    if(gcode_command.indexOf('G') > -1){
       switch(gcode_command.substring(gcode_command.indexOf('G')+1,gcode_command.indexOf('G')+2) .toInt()){
-        case 0:  
+        case 0:   gcode_G0_G1();  break;
         case 1:   gcode_G0_G1();  break;
         case 2:   gcode_G2_G3(true); break;
         case 3:   gcode_G2_G3(false); break;
