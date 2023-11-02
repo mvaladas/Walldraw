@@ -9,14 +9,16 @@ start X and Y?
 #define START_Y 0
 
 #define X_SEPARATION  430
-#define X_MAX_POS       ( X_SEPARATION*0.5)   //x轴最大值  0位在画板中心
-#define X_MIN_POS       (-X_SEPARATION*0.5)   //x轴最小值
-#define PEN_UP_ANGLE    110  //抬笔
-#define PEN_DOWN_ANGLE  50  //落笔
+#define X_MAX_POS       ( X_SEPARATION*0.5)   // The maximum value of the x-axis is 0 in the center of the drawing board
+#define X_MIN_POS       (-X_SEPARATION*0.5)   // x-axis minimum value
+#define PEN_UP_ANGLE    30  // Lift the pen
+#define PEN_DOWN_ANGLE  110  // Put pen to paper
 #define INVERT_M1_DIR     -1        
-#define INVERT_M2_DIR     -1
+#define INVERT_M2_DIR     1
+// 1,1
+// 1,-1
 
-#define Y_MAX_POS         (-200)   //y轴最大值 画板最下方
+#define Y_MAX_POS         (-200)   // Maximum value of y-axis at the bottom of the drawing board
 #define Y_MIN_POS         (200)
 
 #include <Arduino.h>
@@ -27,27 +29,28 @@ start X and Y?
 #define Y_AXIS 1
 #define Z_AXIS 2
 
-#define BAUDRATE            (115200)    //串口速率，用于传输G代码或调试 可选9600，57600，115200 或其他常用速率
+#define BAUDRATE            (115200)    // Serial port rate, used for transmitting G code or debugging, optional 9600, 57600, 115200 or other commonly used rates
 
-#define STEPS_PER_TURN  (2048)  //步进电机一周步长 2048步转360度
-#define SPOOL_DIAMETER  (28)    //线轴直径mm
-#define SPOOL_CIRC      (SPOOL_DIAMETER * 3.1416)  //线轴周长 35*3.14=109.956
-#define DEFAULT_XY_MM_PER_STEP    (SPOOL_CIRC / STEPS_PER_TURN)  //步进电机步距，最小分辨率 每步线绳被拉动的距离  0.053689mm
+#define STEPS_PER_TURN  (2048)  // The stepper motor has a step length of 2048 steps and rotates 360 degrees.
+#define SPOOL_DIAMETER  (28)    // Bobbin diameter mm
+#define SPOOL_CIRC      (SPOOL_DIAMETER * 3.1416)  // Bobbin circumference 35*3.14=109.956
+#define DEFAULT_XY_MM_PER_STEP    (SPOOL_CIRC / STEPS_PER_TURN)  // Stepper motor step pitch, minimum resolution distance the wire is pulled at each step 0.053689mm
 
-#define MM_PER_ARC_SEGMENT  1  //圆弧分割最小每步距离 
-#define N_ARC_CORRECTION   25  //修正之间的极化段数
-
-
-          //两绳上方的水平距离mm 
+#define MM_PER_ARC_SEGMENT  1  // Minimum distance per step for arc segmentation
+#define N_ARC_CORRECTION   25  // Number of polarization segments between corrections
 
 
-/* 垂直距离的参数： 正值在画板下放，理论上只要画板够大可以无限大，负值区域在笔（开机前）的上方*/
-    //y轴最小值 画板最上方  左右两线的固定点到笔的垂直距离，尽量测量摆放准确，误差过大会有畸变
+          // Horizontal distance above the two cords mm
 
-#define LINE_DELAY      1   //步进电机每步的等候时间 （微妙）
 
-//两个电机的旋转方向  1正转  -1反转  
-//调节进出方向可垂直反转图像
+/* Parameters of vertical distance: Positive values are placed below the drawing board. Theoretically, as long as the drawing board is large enough, it can be infinite. Negative value areas are placed above the pen (before power on) */
+
+// The minimum value of the y-axis is the vertical distance from the fixed points of the left and right lines to the pen at the top of the drawing board. Try to measure and place it accurately. Excessive errors will cause distortion.
+
+#define LINE_DELAY      1   // Stepper motor step waiting time (microseconds)
+
+// Rotation direction of the two motors: 1 forward -1 reverse
+// Adjust the in and out direction to reverse the image vertically
 
 
 #define M_PI 3.14159265358979323846
@@ -60,13 +63,13 @@ start X and Y?
 extern String gcode_command;
 extern float destination[XYZ];
 extern float current_position[XYZ];
-extern long current_steps_M1, current_steps_M2; //当前步进电机相对于0点位置总步数
+extern long current_steps_M1, current_steps_M2; // The total number of steps of the current stepper motor relative to the 0-point position
 
 
-//上面是需要调节的参数 =============================================
+// The above are the parameters that need to be adjusted =============================================
 
 
-#define PEN_DOWN 1  //笔状态  下笔
-#define PEN_UP 0    //笔状态  抬笔
+#define PEN_DOWN 1  // Pen status Writing
+#define PEN_UP 0    // Pen status: Pen raised
 
 #endif

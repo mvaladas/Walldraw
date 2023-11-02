@@ -11,5 +11,8 @@ void gcode_G2_G3( bool clockwise );
 void gcode_G4();
 void gcode_M3();
 void gcode_M5();
+void grbl_settings();
+void grbl_parser_state();
+void grbl_build_info();
 
 #endif
